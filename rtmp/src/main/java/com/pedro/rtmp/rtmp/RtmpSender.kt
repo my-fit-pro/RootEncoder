@@ -64,7 +64,7 @@ class RtmpSender(private val connectCheckerRtmp: ConnectCheckerRtmp,
 
   init {
     Log.d(TAG, "Into init block for RtmpSender ${this.hashCode()}")
-    Log.d(TAG, "This build was from ${Date().toString()} NUDGE NUDGE")
+    Log.d(TAG, "This build was from ${Date().toString()} NUDGE NUDGE WINK")
     Log.d(TAG, "connectCheckerRtmp = ${connectCheckerRtmp.hashCode()}")
     Log.d(TAG, "commandsManager = ${commandsManager.hashCode()}")
   }
