@@ -29,6 +29,7 @@ import com.pedro.rtmp.utils.BitrateManager
 import com.pedro.rtmp.utils.ConnectCheckerRtmp
 import com.pedro.rtmp.utils.socket.RtmpSocket
 import java.nio.ByteBuffer
+import java.util.Date
 import java.util.concurrent.*
 
 /**
@@ -63,6 +64,7 @@ class RtmpSender(private val connectCheckerRtmp: ConnectCheckerRtmp,
 
   init {
     Log.d(TAG, "Into init block for RtmpSender ${this.hashCode()}")
+    Log.d(TAG, "This build was from ${Date().toString()}")
     Log.d(TAG, "connectCheckerRtmp = ${connectCheckerRtmp.hashCode()}")
     Log.d(TAG, "commandsManager = ${commandsManager.hashCode()}")
   }
