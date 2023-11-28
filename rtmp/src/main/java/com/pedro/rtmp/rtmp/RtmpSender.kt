@@ -90,7 +90,7 @@ class RtmpSender(private val connectCheckerRtmp: ConnectCheckerRtmp,
   override fun onVideoFrameCreated(flvPacket: FlvPacket) {
     try {
       flvPacketBlockingQueue.add(flvPacket)
-      Log.d(TAG, "Video packet length this is a test")
+      Log.d(TAG, "Video packet #${videoFramesSent} : length = ${flvPacket.length}")
     } catch (e: IllegalStateException) {
       Log.i(TAG, "Video frame discarded")
       droppedVideoFrames++
