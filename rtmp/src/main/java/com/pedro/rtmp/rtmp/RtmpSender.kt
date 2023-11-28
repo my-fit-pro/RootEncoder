@@ -37,6 +37,8 @@ import java.util.concurrent.*
 class RtmpSender(private val connectCheckerRtmp: ConnectCheckerRtmp,
   private val commandsManager: CommandsManager) : AudioPacketCallback, VideoPacketCallback {
 
+
+
   private var aacPacket = AacPacket(this)
   private var h264Packet = H264Packet(this)
   @Volatile
@@ -57,6 +59,12 @@ class RtmpSender(private val connectCheckerRtmp: ConnectCheckerRtmp,
 
   companion object {
     private const val TAG = "RtmpSender"
+  }
+
+  init {
+    Log.d(TAG, "Into init block for RtmpSender ${this.hashCode()}")
+    Log.d(TAG, "connectCheckerRtmp = ${connectCheckerRtmp.hashCode()}")
+    Log.d(TAG, "commandsManager = ${commandsManager.hashCode()}")
   }
 
   fun setVideoInfo(sps: ByteBuffer, pps: ByteBuffer, vps: ByteBuffer?) {
@@ -82,6 +90,7 @@ class RtmpSender(private val connectCheckerRtmp: ConnectCheckerRtmp,
   override fun onVideoFrameCreated(flvPacket: FlvPacket) {
     try {
       flvPacketBlockingQueue.add(flvPacket)
+      Log.d(TAG, "Video frame packet $flvPacket added to queue which now contains ${flvPacketBlockingQueue.size} packets ")
     } catch (e: IllegalStateException) {
       Log.i(TAG, "Video frame discarded")
       droppedVideoFrames++
